@@ -3,13 +3,12 @@ package ExceptionHandeling;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-class InsufficientBalException extends Exception {
-    public InsufficientBalException(String message) {
-        super(message);
-    }
-}
-
 class BankAccount {
+    class InsufficientBalException extends Exception {
+        public InsufficientBalException(String message) {
+            super(message);
+        }
+    }
     private double balance;
     Scanner sc = new Scanner(System.in);
     public BankAccount(double initialBalance) {
@@ -66,7 +65,7 @@ class BankWithdrawalSystem {
         double amount = sc.nextDouble();
         try {
             account.withdraw(amount);
-        } catch (InsufficientBalException e) {
+        } catch (BankAccount.InsufficientBalException e) {
             System.out.println(e.getMessage());
         }
 
@@ -74,7 +73,7 @@ class BankWithdrawalSystem {
         double amount1 = sc.nextDouble();
         try {
             account.addBalance(amount1);
-        } catch (InsufficientBalException e) {
+        } catch (BankAccount.InsufficientBalException e) {
             System.out.println(e.getMessage());
         }
 

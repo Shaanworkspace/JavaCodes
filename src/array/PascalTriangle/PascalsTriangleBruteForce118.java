@@ -1,9 +1,9 @@
-package array.PascalTriangle118;
+package array.PascalTriangle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PascalsTriangleBruteForce {
+public class PascalsTriangleBruteForce118 {
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> result = new ArrayList<>();
         if(numRows==0) return result;
@@ -18,7 +18,7 @@ public class PascalsTriangleBruteForce {
             List<Integer> previousList = result.get(i-1);
             List<Integer> midList = new ArrayList<>();
             midList.add(1);
-            for(int j = 1 ; j<i-1 ;j++){
+            for(int j = 1 ; j<i ;j++){
                 midList.add(previousList.get(j)+previousList.get(j-1));
             }
             midList.add(1);
