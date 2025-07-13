@@ -39,22 +39,22 @@ public class BasicLinkedListOperation {
     public static void main(String[] args) {
         ListNode a = new ListNode(1);
         ListNode b = new ListNode(2);
-//        ListNode c = new ListNode(3);
-//        ListNode d = new ListNode(4);
-//        ListNode e = new ListNode(5);
+        ListNode c = new ListNode(3);
+        ListNode d = new ListNode(4);
+        ListNode e = new ListNode(5);
         System.out.println(a);
         a.next=b;
         System.out.println(a.next); //basicLinkedList$Node@2a84aee7
         System.out.println(b); //basicLinkedList$Node@2a84aee7
 //
-//        b.next=c;
-//        System.out.println(b.next); //basicLinkedList$Node@a09ee92
-//        System.out.println(c); //basicLinkedList$Node@a09ee92
-//
-//        c.next=d;
-//        System.out.println(c.next);
-//        System.out.println(d);
-//        d.next=e;
+        b.next=c;
+        System.out.println(b.next); //basicLinkedList$Node@a09ee92
+        System.out.println(c); //basicLinkedList$Node@a09ee92
+
+        c.next=d;
+        System.out.println(c.next);
+        System.out.println(d);
+        d.next=e;
         int len = lengthOfLL(a);
         System.out.println(len);
         System.out.println("----------------------------------------------");
