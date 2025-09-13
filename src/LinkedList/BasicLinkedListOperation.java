@@ -30,11 +30,27 @@ public class BasicLinkedListOperation {
         return head;
     }
     public static void print(ListNode head){
+        int len=0;
         ListNode temp = head;
+        System.out.print("[ ");
         while(temp != null){
-            System.out.println(temp.data);
+            System.out.print(temp.data+" ");
+            len++;
             temp=temp.next;
         }
+        System.out.print(" ]");
+
+        System.out.println("Length of List :"+len);
+    }
+
+    public int lengthOfLinkedList(ListNode a){
+        int len=0;
+        ListNode temp =a;
+        while(temp != null){
+
+            temp=temp.next;
+        }
+        return len;
     }
     public static void main(String[] args) {
         ListNode a = new ListNode(1);
@@ -62,5 +78,9 @@ public class BasicLinkedListOperation {
         System.out.println("----------------------------------------------");
         ListNode result = removeNthFromEnd(a,1);
         print(result);
+
+        System.out.println("---------------------------------------------length");
+        BasicLinkedListOperation basicLinkedListOperation = new BasicLinkedListOperation();
+        System.out.println(basicLinkedListOperation.lengthOfLinkedList(a));
     }
 }
