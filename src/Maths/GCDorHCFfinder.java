@@ -1,8 +1,10 @@
 package Maths;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
-public class GCDfinder {
+public class GCDorHCFfinder {
 
     // 1. Brute Force (slowest, checks from max --> downwards)
     public static int gcdBruteForce(int a, int b) {
@@ -30,6 +32,23 @@ public class GCDfinder {
         return result;
     }
 
+
+
+
+    public static int gcdOfTwoLists(List<Integer> list1, List<Integer> list2) {
+        int gcd1 = gcdOfList(list1);
+        int gcd2 = gcdOfList(list2);
+        return gcdEuclidean(gcd1, gcd2);
+    }
+    // GCD of a single list
+    public static int gcdOfList(List<Integer> list) {
+        int result = list.get(0);
+        for (int i = 1; i < list.size(); i++) {
+            result = gcdEuclidean(result, list.get(i));
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -51,5 +70,17 @@ public class GCDfinder {
         System.out.print("Array : ");
         for (int x : arr) System.out.print(x + " ");
         System.out.println("\nGCD   : " + gcdOfArray(arr));
+
+
+
+
+
+
+        List<Integer> list1 = Arrays.asList(24, 36, 48);
+        List<Integer> list2 = Arrays.asList(18, 30, 12);
+
+        System.out.println("GCD of List1 = " + gcdOfList(list1));
+        System.out.println("GCD of List2 = " + gcdOfList(list2));
+        System.out.println("GCD of Both Combined = " + gcdOfTwoLists(list1, list2));
     }
 }
