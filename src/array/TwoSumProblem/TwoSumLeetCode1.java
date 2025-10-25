@@ -1,70 +1,95 @@
 package array.TwoSumProblem;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.HashMap;
 
 public class TwoSumLeetCode1 {
 
-    //Method 1 : Brute Force
-    public static  int[] twoSumBruteForce(int[] nums, int target) {
+    // ===========================================================
+    // 🐢 Method 1: Brute Force  — O(n²)
+    // ===========================================================
+    public int[] twoSumBruteForce(int[] nums, int target) {
         for (int i = 0; i < nums.length; i++) {
             for (int j = i + 1; j < nums.length; j++) {
-                if (nums[j] == target - nums[i]) {
-                    return new int[] { i, j };
+                if (nums[i] + nums[j] == target) {
+                    return new int[]{i, j};
                 }
             }
         }
-        // If no valid pair is found, return an empty array instead of null
-        return new int[] {};
+        return new int[]{}; // no valid pair
     }
 
-    /*
-
-    Tumhare twoSumByHashMap me ek possible bug hai: agar same element is needed (like [3,3], target = 6),
-    tumhare loop put karke overwrite kar dega aur galat answer return kar sakta hai. Safer logic ye hoti hai:
-
-    public static int[] twoSumByHashMap(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
-        for (int i = 0; i < nums.length; i++) {
-            map.put(nums[i], i);
-        }
-
-        for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(target - nums[i])) {
-                return new int[] { i, map.get(target - nums[i]) };
-            }
-        }
-        return new int[] {};
-    }
-
-     */
-
-    //Method 2 : Hashmap Approach with correct way (removing [3,3] same index error)
-    public static int[] twoSumByHashMap(int[] nums, int target) {
+    // ===========================================================
+    // ⚡ Method 2: HashMap (Correct fixed‑index version) — O(n)
+    // ===========================================================
+    public int[] twoSumByHashMap(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement)) {
-                return new int[] { map.get(complement), i };
+                return new int[]{map.get(complement), i};
             }
             map.put(nums[i], i);
         }
-        return new int[] {};
+        return new int[]{};
     }
 
+    // ===========================================================
+    // 🔍 Method 3: TryYourSelf — your original approach improved
+    // ===========================================================
+    public int[] twoSumTryYourSelf(int[] nums, int target) {
+        HashMap<Integer,Integer> ind = new HashMap<>();
+        for(int i = 0 ; i<nums.length ;i++){
+            ind.put(nums[i],i);
+        }
 
+        for(int i = 0;i<nums.length;i++){
+            int complement = target - nums[i];
+            if(ind.containsKey(complement)){
+                int j = ind.get(complement);
+                if(j!=i){
+                    return new int[] {i,j};
+                }
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    // ===========================================================
+    // 🧾 Test Runner — neatly formatted dashboard
+    // ===========================================================
+    private static void runTest(TwoSumLeetCode1 solver, int[] nums, int target, int[] expected, String testName) {
+        System.out.println("🔹 " + testName);
+        System.out.println("Array   : " + Arrays.toString(nums));
+        System.out.println("Target  : " + target);
+        System.out.println("Expected: " + Arrays.toString(expected));
+
+        int[] brute = solver.twoSumBruteForce(nums, target);
+        int[] map   = solver.twoSumByHashMap(nums, target);
+        int[] self  = solver.twoSumTryYourSelf(nums, target);
+
+        System.out.printf("Brute Force (O²)       : %-10s %s%n",
+                Arrays.toString(brute), Arrays.equals(brute, expected) ? "✅" : "❌");
+        System.out.printf("HashMap (O(n))         : %-10s %s%n",
+                Arrays.toString(map), Arrays.equals(map, expected) ? "✅" : "❌");
+        System.out.printf("TryYourSelf (Your ver) : %-10s %s%n",
+                Arrays.toString(self), Arrays.equals(self, expected) ? "✅" : "❌");
+        System.out.println("--------------------------------------------\n");
+    }
+
+    // ===========================================================
+    // 🚀 PSVM — Clean IntelliJ Dashboard
+    // ===========================================================
     public static void main(String[] args) {
-        int[] arr = {3,2,4};
-        int target =6;
-        System.out.println("By Two Sum Brute Force");
-        System.out.println(Arrays.toString(twoSumBruteForce(arr,target)));
-        System.out.println("By Two Sum By HashMap");
-        System.out.println(Arrays.toString(twoSumByHashMap(arr,target)));
-        System.out.println("By Two Sum By BinarySearch");
-//        System.out.println(Arrays.toString(twoSumByBinarySearch(arr,target)));
+        TwoSumLeetCode1 solver = new TwoSumLeetCode1();
 
+        System.out.println("=================================================");
+        System.out.println("🎯  LeetCode 1 — Two Sum Approaches Comparison");
+        System.out.println("=================================================\n");
+
+        runTest(solver, new int[]{2, 7, 11, 15}, 9, new int[]{0, 1}, "Test 1");
+        runTest(solver, new int[]{3, 2, 4}, 6, new int[]{1, 2}, "Test 2");
+        runTest(solver, new int[]{3, 3}, 6, new int[]{0, 1}, "Test 3");
+        runTest(solver, new int[]{-1, 0, 1, 2, -1, -4}, 0, new int[]{1, 2}, "Test 4 (just a random one)");
     }
-
-
 }

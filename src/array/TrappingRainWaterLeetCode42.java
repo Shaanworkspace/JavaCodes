@@ -21,16 +21,37 @@ public class TrappingRainWaterLeetCode42 {
     // Brute force O(n²) version for understanding
     // ===========================================================
     public int trapBrute(int[] height) {
-        int n = height.length;
-        int water = 0;
-        // For each bar, find highest left & right boundaries
-        for (int i = 0; i < n; i++) {
-            int leftMax = 0, rightMax = 0;
-            for (int l = i; l >= 0; l--) leftMax = Math.max(leftMax, height[l]);
-            for (int r = i; r < n; r++) rightMax = Math.max(rightMax, height[r]);
-            water += Math.min(leftMax, rightMax) - height[i];
+        int n = height.length,sum=0;
+        /*
+        Idea is : holding capacity of each index is Math.min(leftMax,rightMax) - arr[i]  so we need to check for all holding capacity and take sum of all
+         */
+
+        //to check leftMax and rightMax.we have to make two array for both
+        int[] leftMaxArray = new int[n];
+        int[] rightMaxArray = new int[n];
+
+
+        //finding leftMax Array
+        leftMaxArray[0]=height[0];
+        for(int i =1;i<n;i++){
+            leftMaxArray[i] = Math.max(height[i],leftMaxArray[i-1]);
         }
-        return water;
+
+
+        //finding RightMax Array
+        rightMaxArray[n-1] = height[n-1];
+        for(int i =n-2;i>=0;i--){
+            rightMaxArray[i] = Math.max(rightMaxArray[i+1],height[i]);
+        }
+
+
+        //now traverse the array and sum of all the height traps capacity
+
+        for(int i = 0;i<n;i++){
+            sum+=Math.min(leftMaxArray[i],rightMaxArray[i])-height[i];
+        }
+
+        return sum;
     }
 
     // ===========================================================

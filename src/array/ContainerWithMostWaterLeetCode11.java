@@ -1,60 +1,92 @@
 package array;
 
+import java.util.Arrays;
+
 public class ContainerWithMostWaterLeetCode11 {
+
+    // ===========================================================
+    // 🧠 Optimized O(n) Two‑Pointer Solution
+    // ===========================================================
     public int maxArea(int[] height) {
-        int n  = height.length;
-        int left = 0,right = n -1;
+        int left = 0, right = height.length - 1;
         int max = 0;
-        while(left < right){
-            int area =  Math.min(height[left],height[right]) * (right - left);
+        while (left < right) {
+            int area = Math.min(height[left], height[right]) * (right - left);
             max = Math.max(max, area);
-            if(height[left] < height[right]){
-                left++;
-            }
-            else{
-                right--;
-            }
+            if (height[left] < height[right]) left++;
+            else right--;
         }
         return max;
     }
 
+    // ===========================================================
+    // 🐢 Brute‑Force O(n²) Solution
+    // ===========================================================
     public int maxAreaBrute(int[] height) {
-        int max=0;
-        for(int i =0;i<height.length;i++){
-            for(int j =i+1;j<height.length;j++){
-                int area = (j-i)*Math.min(height[i],height[j]);
-                if(area>max){
-                    max=area;
-                }
+        int max = 0;
+        for (int i = 0; i < height.length; i++) {
+            for (int j = i + 1; j < height.length; j++) {
+                int area = (j - i) * Math.min(height[i], height[j]);
+                max = Math.max(max, area);
             }
         }
-
         return max;
     }
 
+    // ===========================================================
+    // 🧪 Try‑YourSelf Version — smarter comparison style
+    // ===========================================================
+    public int maxAreaTryYourSelf(int[] height) {
+        int n = height.length;
+        int max=0,i = 0,j=n-1;
 
-    public static void main(String[] args) {
-        ContainerWithMostWaterLeetCode11 solver = new ContainerWithMostWaterLeetCode11();
+        while(i<j){
+            int area = Math.min(height[i],height[j])*(j-i);
 
-        int[] test1 = {1,8,6,2,5,4,8,3,7};
-        int[] test2 = {1, 1};
-        int[] test3 = {4, 3, 2, 1, 4};
-        int[] test4 = {1, 2, 1};
+            max = Math.max(max, area);
 
-        System.out.println("===== Container With Most Water Tests =====\n");
-
-        printResult(solver, test1, "Test 1: Heights = {1,8,6,2,5,4,8,3,7}", 49);
-        printResult(solver, test2, "Test 2: Heights = {1,1}", 1);
-        printResult(solver, test3, "Test 3: Heights = {4,3,2,1,4}", 16);
-        printResult(solver, test4, "Test 4: Heights = {1,2,1}", 2);
+            if(height[i] < height[j]){
+                i++;
+            }else{
+                j--;
+            }
+        }
+        return max;
     }
 
-    private static void printResult(ContainerWithMostWaterLeetCode11 solver, int[] heights, String testName, int expected) {
-        System.out.println(testName);
-        System.out.println("Expected Output : " + expected);
-        System.out.println("Brute Force     : " + solver.maxAreaBrute(heights));
-        System.out.println("Optimized Two-Pointer : " + solver.maxArea(heights));
+    // ===========================================================
+    // 🧾 Unified Test Runner — prints Brute, TryYourSelf, Optimized results
+    // ===========================================================
+    private static void runTest(ContainerWithMostWaterLeetCode11 solver,
+                                int[] heights, int expected, String testName) {
+        System.out.println("🔹 " + testName);
+        System.out.println("Heights          : " + Arrays.toString(heights));
+        System.out.println("Expected Output  : " + expected);
+
+        int brute = solver.maxAreaBrute(heights);
+        int trySelf = solver.maxAreaTryYourSelf(heights);
+        int opt = solver.maxArea(heights);
+
+        System.out.println("Brute Force (O²)         : " + brute + (brute == expected ? " ✅" : " ❌"));
+        System.out.println("TryYourSelf (custom loop) : " + trySelf + (trySelf == expected ? " ✅" : " ❌"));
+        System.out.println("Optimized (O(n))         : " + opt + (opt == expected ? " ✅" : " ❌"));
         System.out.println("--------------------------------------------\n");
     }
 
+    // ===========================================================
+    // 🚀 PSVM — Test Dashboard
+    // ===========================================================
+    public static void main(String[] args) {
+        ContainerWithMostWaterLeetCode11 solver = new ContainerWithMostWaterLeetCode11();
+
+        System.out.println("=================================================");
+        System.out.println("🏞️  Container With Most Water — Tests");
+        System.out.println("=================================================\n");
+
+        runTest(solver, new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}, 49, "Test 1");
+        runTest(solver, new int[]{1, 1}, 1, "Test 2");
+        runTest(solver, new int[]{4, 3, 2, 1, 4}, 16, "Test 3");
+        runTest(solver, new int[]{1, 2, 1}, 2, "Test 4");
+        runTest(solver, new int[]{2, 3, 10, 5, 7, 8, 9}, 36, "Test 5");
+    }
 }
