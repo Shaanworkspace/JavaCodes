@@ -1,4 +1,4 @@
-package array;
+package array.AdjacentIncreasingSubarraysDetection;
 
 import java.util.*;
 

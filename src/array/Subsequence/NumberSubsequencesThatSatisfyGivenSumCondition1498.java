@@ -1,7 +1,5 @@
 package array.Subsequence;
 
-import array.Sorting.InsertionSortExample;
-
 public class NumberSubsequencesThatSatisfyGivenSumCondition1498 {
     public static void insertionSort(int[] arr) {
         int n = arr.length;
