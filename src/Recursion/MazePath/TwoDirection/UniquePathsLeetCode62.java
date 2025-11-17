@@ -1,8 +1,7 @@
-package Recursion.MazePath;
+package Recursion.MazePath.TwoDirection;
 
 
-import java.util.*;
-
+// Rat in a Maze
 public class UniquePathsLeetCode62 {
 
     // ===========================================================

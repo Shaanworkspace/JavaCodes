@@ -1,4 +1,4 @@
-package array.Permutation;
+package Backtracking.Permutation;
 
 import java.util.*;
 
@@ -8,28 +8,81 @@ public class PermutationsLeetCode46 {
     // Brute‑Force Approach (baseline)
     // ===========================================================
     public List<List<Integer>> permuteBrute(int[] nums) {
-        // TODO: implement brute‑force permutation generator
-        return new ArrayList<>(); // demo placeholder
+        List<List<Integer>> result = new ArrayList<>();
+        ArrayList<Integer> adder = new ArrayList<>();
+        boolean[] isValid = new boolean[nums.length];
+
+        createPermutation(nums,adder,result,isValid);
+        return result;
     }
+    private void createPermutation(int[] nums, ArrayList<Integer> adder, List<List<Integer>> result, boolean[] isValid) {
+
+        if(adder.size() == nums.length){
+            List<Integer> temp = new ArrayList<>(adder);
+            result.add(temp);
+            return;
+        }
+
+
+        for(int i=0;i<nums.length;i++){
+
+            if(isValid[i]) continue;
+            //work before call
+            adder.add(nums[i]);
+            isValid[i] = true;
+
+            createPermutation(nums,adder,result,isValid);
+
+
+            //backtracking
+            adder.removeLast();
+            isValid[i] = false;
+        }
+    }
+
 
     // ===========================================================
     // TryYourSelf Variant (for practice / debug prints)
     // ===========================================================
     public List<List<Integer>> permuteTryYourSelf(int[] nums) {
-        // TODO: implement your own traced version
-        return new ArrayList<>(); // demo placeholder
-    }
 
+        return List.of();
+    }
     // ===========================================================
-    // ⚡ Optimized Backtracking Approach — O(n × n!)
+    // ⚡ Optimized Backtracking Approach — we removed all extra space
     // ===========================================================
     public List<List<Integer>> permute(int[] nums) {
-        // TODO: implement optimized backtracking algorithm
-        return new ArrayList<>(); // demo placeholder
+         List<List<Integer>> result = new ArrayList<>();
+         helper(nums,0,result);
+         return result;
+    }
+
+    private void helper(int[] nums, int idx, List<List<Integer>> result) {
+        int n = nums.length;
+        if(idx ==n-1){
+            List<Integer> arr = new ArrayList<>();
+            for(int a : nums){
+                arr.add(a);
+            }
+            result.add(arr);
+            return;
+        }
+
+        for(int i = idx ;i<n;i++){
+            swap(i,idx,nums);
+            helper(nums,idx+1,result);
+            swap(i,idx,nums);
+        }
+    }
+
+    private void swap(int i, int idx, int[] nums) {
+        int temp = nums[i];
+        nums[i] = nums[idx];
+        nums[idx] = temp;
     }
 
     // ===========================================================
-    // 🧾 Test Runner — compares all methods, prints ✅ / ❌
+    // Test Runner — compares all methods, prints ✅ / ❌
     // ===========================================================
     private static void runTest(PermutationsLeetCode46 solver,
                                 int[] nums, List<List<Integer>> expected, String testName) {

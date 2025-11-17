@@ -1,4 +1,4 @@
-package Recursion.MazePath;
+package Recursion.MazePath.TwoDirection;
 
 public class PrintUniquePathsZeroBased {
 

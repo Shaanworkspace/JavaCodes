@@ -1,4 +1,4 @@
-package array.Subsequence;
+package array.SubsequenceOrSubsets;
 
 public class NumberSubsequencesThatSatisfyGivenSumCondition1498 {
     public static void insertionSort(int[] arr) {
