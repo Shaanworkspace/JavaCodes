@@ -5,7 +5,7 @@ import java.util.*;
 public class PermutationsLeetCode46 {
 
     // ===========================================================
-    // Brute‑Force Approach (baseline)
+    // Brute‑Force Approach : TIME -> https://youtu.be/PAgvK1Oku6U?t=4702
     // ===========================================================
     public List<List<Integer>> permuteBrute(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
@@ -45,9 +45,37 @@ public class PermutationsLeetCode46 {
     // TryYourSelf Variant (for practice / debug prints)
     // ===========================================================
     public List<List<Integer>> permuteTryYourSelf(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        ArrayList<Integer> adder = new ArrayList<>();
+        boolean[] isValid = new boolean[nums.length];
 
-        return List.of();
+        createPermutation2(nums,adder,result,isValid);
+        return result;
     }
+
+    private void createPermutation2(int[] nums, ArrayList<Integer> adder, List<List<Integer>> result, boolean[] isValid) {
+
+        if(adder.size() == nums.length){
+            result.add(new ArrayList<>(adder));
+            return;
+        }
+
+
+        for(int i =0;i<nums.length;i++){
+            if(isValid[i]) continue;
+
+            int ch = nums[i];
+            adder.add(ch);
+            isValid[i]=true;
+
+            createPermutation2(nums,adder,result,isValid);
+
+            adder.removeLast();
+            isValid[i]=false;
+        }
+
+    }
+
     // ===========================================================
     // ⚡ Optimized Backtracking Approach — we removed all extra space
     // ===========================================================

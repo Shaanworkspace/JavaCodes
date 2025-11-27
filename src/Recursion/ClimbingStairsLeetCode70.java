@@ -17,36 +17,31 @@ public class ClimbingStairsLeetCode70 {
     // ===========================================================
     // ✍️ TryYourSelf Variant (Memoization / debug prints)
     // ===========================================================
-    public int climbStairsTryYourSelf(int n, Map<Integer, Integer> memo) {
+    public int climbStairsTryYourSelf(int n) {
+        if(n<=0) return 1;
+        if(n<3) return n;
+        int startByOneStep = climbStairsTryYourSelf(n-1);
+        int startBySecondStep = climbStairsTryYourSelf(n-2);
+        return startBySecondStep+startByOneStep;
+    }
+
+    // ===========================================================
+    // ⚡ Optimized DP / Fibonacci Iteration — O(n) , O(1) space
+    // ===========================================================
+    public int climbStairs(int n, Map<Integer, Integer> memo) {
         if (n <= 0) return 0;
         if (n == 1 || n == 2) return n;
 
         if (memo.containsKey(n)) return memo.get(n);
 
-        int one = climbStairsTryYourSelf(n - 1, memo);
-        int two = climbStairsTryYourSelf(n - 2, memo);
+        int one = climbStairs(n - 1, memo);
+        int two = climbStairs(n - 2, memo);
         int total = one + two;
         memo.put(n, total);
 
         // step‑by‑step trace (optional)
         // System.out.printf("n=%d -> %d%n", n, total);
         return total;
-    }
-
-    // ===========================================================
-    // ⚡ Optimized DP / Fibonacci Iteration — O(n) , O(1) space
-    // ===========================================================
-    public int climbStairs(int n) {
-        if (n <= 0) return 0;
-        if (n == 1 || n == 2) return n;
-
-        int prev1 = 1, prev2 = 2;
-        for (int i = 3; i <= n; i++) {
-            int current = prev1 + prev2;
-            prev1 = prev2;
-            prev2 = current;
-        }
-        return prev2;
     }
 
     // ===========================================================
@@ -59,8 +54,8 @@ public class ClimbingStairsLeetCode70 {
         System.out.println("Expected  : " + expected);
 
         int brute = solver.climbStairsBrute(n);
-        int your  = solver.climbStairsTryYourSelf(n, new HashMap<>());
-        int opt   = solver.climbStairs(n);
+        int your  = solver.climbStairsTryYourSelf(n);
+        int opt   = solver.climbStairs(n, new HashMap<>());
 
         System.out.printf("Brute Recursion      : %-5d %s%n", brute, brute == expected ? "✅" : "❌");
         System.out.printf("TryYourSelf (Memo)   : %-5d %s%n", your,  your == expected ? "✅" : "❌");
