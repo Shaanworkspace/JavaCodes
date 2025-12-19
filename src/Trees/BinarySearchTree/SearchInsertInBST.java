@@ -1,4 +1,4 @@
-package BST;
+package Trees.BinarySearchTree;
 public class SearchInsertInBST {
     public boolean search(TreeNode node , int target){
         if(node == null) return false;

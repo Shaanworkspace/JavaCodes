@@ -1,4 +1,6 @@
 package Trees.BinaryTree;
+import Recursion.MazePath.DeadMaze.RatInADeadMazeFourDirection;
+
 import java.util.*;
 
 /**
@@ -78,8 +80,41 @@ public class DiameterOfBinaryTreeLeetCode543 {
     // TryYourSelf Variant (with debug tracing)
     // ===========================================================
     public int diameterOfBinaryTreeTryYourSelf(TreeNode root) {
-        // TODO: implement version with printed recursion progress
-        return 0; // placeholder
+        int height = height(root);
+        int dia=0;
+        for(int i =1;i<=height+1;i++){
+            List<Integer> arr = new ArrayList<>();
+            findDia(root,i,arr);
+            for(int n:arr){
+                dia=Math.max(dia,n);
+            }
+        }
+        return dia;
+    }
+
+    private void findDia(TreeNode root, int level,List<Integer> arr) {
+        if(root==null) return;
+        if(level==1){
+            int left =0;
+            int right =0;
+            int mid=0;
+            if(root.left!=null) left=height(root.left);
+            if(root.right!=null) right=height(root.right);
+            mid=left+right;
+            if(root.left!=null) mid++;
+            if(root.right!=null) mid++;
+            arr.add(mid);
+            return ;
+        }
+        findDia(root.left,level-1,arr);
+        findDia(root.right,level-1,arr);
+    }
+
+    public static int height(TreeNode root) {
+        if(root==null || (root.left==null && root.right==null)) return 0;
+        int left = height(root.left);
+        int right = height(root.right);
+        return 1+Math.max(left,right);
     }
 
     // ===========================================================

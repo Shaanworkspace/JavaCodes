@@ -22,14 +22,14 @@ public class setMatrixZeroesBruteForce {
             }
         }
 
-        // Step 2: Set the rows to zero
+        // Step 2: Collections.Set the rows to zero
         for (int i : zeroRows) {
             for (int j = 0; j < columns; j++) {
                 matrix[i][j] = 0;
             }
         }
 
-        // Step 3: Set the columns to zero
+        // Step 3: Collections.Set the columns to zero
         for (int j : zeroCols) {
             for (int i = 0; i < rows; i++) {
                 matrix[i][j] = 0;

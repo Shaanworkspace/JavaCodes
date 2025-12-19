@@ -11,7 +11,7 @@ public class setiThBit {
         // Step 1: Make the mask
         int mask = 1 << i;
 
-        // Step 2: Set the ith bit
+        // Step 2: Collections.Set the ith bit
         int newNum = n | mask;
 
         // Step 3: Return binary representation of the result

@@ -9,12 +9,12 @@ import java.util.*;
  * https://youtu.be/nwySujCaeH0?t=2520
  * ===========================================================
  *
- * You are given the root of a Binary Search Tree (BST) and a
+ * You are given the root of a Binary Search Tree (Trees.BST) and a
  * value to insert into the tree. Return the root node after
  * insertion. The new value is guaranteed not to exist initially.
  *
  * Note: There may be multiple valid trees; returning any valid
- * BST after insertion is acceptable.
+ * Trees.BST after insertion is acceptable.
  *
  * -----------------------------------------------------------
  * Example 1:
@@ -80,7 +80,7 @@ public class InsertIntoBSTLeetCode701 {
     }
 
     // ===========================================================
-    // ⚡ Optimized BST Insertion (concise recursive) — O(h)
+    // ⚡ Optimized Trees.BST Insertion (concise recursive) — O(h)
     // ===========================================================
     public TreeNode insertIntoBST(TreeNode root, int val) {
         // TODO: implement optimized recursion

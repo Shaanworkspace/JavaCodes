@@ -47,13 +47,13 @@ public class UniqueMethodsDemo {
         System.out.println("--------------------------------------------------------");
 
 
-        // HashSet: Specific methods (minimal, as Set interface is basic)
+        // HashSet: Specific methods (minimal, as Collections.Set interface is basic)
         System.out.println("=== HashSet Unique Methods ===");
         Set<String> hashSet = new HashSet<>();
         hashSet.add("Apple");
         hashSet.add("Banana");
         hashSet.add("Orange");
-        // Note: HashSet has no unique methods beyond Set interface, but we can highlight its behavior
+        // Note: HashSet has no unique methods beyond Collections.Set interface, but we can highlight its behavior
         System.out.println("HashSet (no duplicates, unordered): " + hashSet);
         // add returns false if element already exists
         boolean added = hashSet.add("Apple");
@@ -131,7 +131,7 @@ public class UniqueMethodsDemo {
         System.out.println("After addElement(Yellow): " + vector); // [Red, Green, Blue, Yellow]
         // elementAt(int index): Get element at index (legacy)
         System.out.println("Element at index 1: " + vector.elementAt(1)); // Green
-        // setElementAt(E obj, int index): Set element at index (legacy)
+        // setElementAt(E obj, int index): Collections.Set element at index (legacy)
         vector.setElementAt("Purple", 1);
         System.out.println("After setElementAt(Purple, 1): " + vector); // [Red, Purple, Blue, Yellow]
         // capacity(): Get current capacity

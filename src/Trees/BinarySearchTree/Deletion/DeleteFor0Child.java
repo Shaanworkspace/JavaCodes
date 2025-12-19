@@ -8,7 +8,7 @@ public class DeleteFor0Child {
         TreeNode(int val) { this.val = val; }
     }
 
-    // BST insert helper
+    // Trees.BST insert helper
     static TreeNode insert(TreeNode root, int val) {
         if (root == null) return new TreeNode(val);
         if (val < root.val) root.left = insert(root.left, val);
