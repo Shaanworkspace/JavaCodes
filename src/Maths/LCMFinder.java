@@ -15,7 +15,7 @@ public class LCMFinder {
         return (a * b) / gcdEuclidean(a, b);
     }
 
-    // LCM of an array
+    // LCM of an Array
     public static int lcmOfArray(int[] arr) {
         int result = arr[0];
         for (int i = 1; i < arr.length; i++) {

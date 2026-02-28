@@ -3,9 +3,7 @@ import java.util.*;
 
 public class PowerOfFourLeetCode342 {
 
-    // ===========================================================
-    // Approach 1 — Recursive Division
-    // ===========================================================
+
     public boolean isPowerOfFourApproach1(int n) {
         if (n <= 0) return false;
         if (n == 1) return true;
@@ -13,9 +11,7 @@ public class PowerOfFourLeetCode342 {
         return isPowerOfFourApproach1(n / 4);
     }
 
-    // ===========================================================
-    // Approach 2 — Iterative Division (Loop-based)
-    // ===========================================================
+
     public boolean isPowerOfFourApproach2(int n) {
         if (n <= 0) return false;
         while (n > 1) {
@@ -25,32 +21,23 @@ public class PowerOfFourLeetCode342 {
         return true;
     }
 
-    // ===========================================================
-    // Approach 3 — Bit Manipulation (O(1))
-    // ===========================================================
-    // 1) n is power of two: (n & (n-1)) == 0
-    // 2) the single set bit is at even index: (n & 0x55555555) != 0
+
     public boolean isPowerOfFourApproach3(int n) {
         return n > 0 && (n & (n - 1)) == 0 && (n & 0x55555555) != 0;
-        // Alternative constant-time (no floats):
-        // return n > 0 && (n & (n - 1)) == 0 && n % 3 == 1;
+
     }
 
-    // ===========================================================
-    // Approach 4 — Logarithmic Math (O(1))
-    // ===========================================================
+
     public boolean isPowerOfFourApproach4(int n) {
         if (n <= 0) return false;
         double logValue = Math.log10(n) / Math.log10(4);
         return (int)Math.round(logValue) == logValue;
     }
 
-    // ===========================================================
-    // 🧾 Test Runner — Compare all approaches
-    // ===========================================================
+
     private static void runTest(PowerOfFourLeetCode342 solver,
                                 int n, boolean expected, String testName) {
-        System.out.println("🔹 " + testName);
+        System.out.println("-> " + testName);
         System.out.println("Input (n) : " + n);
         System.out.println("Expected  : " + expected);
 
@@ -66,9 +53,7 @@ public class PowerOfFourLeetCode342 {
         System.out.println("--------------------------------------------\n");
     }
 
-    // ===========================================================
-    // 🚀 PSVM — Unified testing of all four methods
-    // ===========================================================
+
     public static void main(String[] args) {
         PowerOfFourLeetCode342 solver = new PowerOfFourLeetCode342();
 

@@ -6,7 +6,7 @@ import java.util.*;
  * ===========================================================
  * 🍪 LeetCode 2305 — Fair Distribution of Cookies
  * ===========================================================
- * You are given an integer array cookies[] where cookies[i]
+ * You are given an integer Array cookies[] where cookies[i]
  * is the number of cookies in the i-th bag. You must distribute
  * the bags among k children such that the unfairness
  * (maximum cookies given to any child) is minimized.

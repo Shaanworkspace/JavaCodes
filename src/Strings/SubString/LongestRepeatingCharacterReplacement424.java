@@ -4,7 +4,7 @@ public class LongestRepeatingCharacterReplacement424 {
     public static int characterReplacement(String s, int k) {
         int n=s.length(),result=0;
         for(int start = 0 ; start<n ;start++){
-            int[] arr = new int[26];  // reset freq array for each window
+            int[] arr = new int[26];  // reset freq Array for each window
             int max = 0;
             for(int end = start ;end<n;end++){
                 arr[s.charAt(end)-'A']++;

@@ -5,7 +5,7 @@ You are given an integer n. You need to check whether it is an armstrong number 
 
 
 
-An armstrong number is array2D number which is equal to the sum of the digits of the number, raised to the power of the number of digits.
+An armstrong number is Matrix number which is equal to the sum of the digits of the number, raised to the power of the number of digits.
 
 
 Examples:

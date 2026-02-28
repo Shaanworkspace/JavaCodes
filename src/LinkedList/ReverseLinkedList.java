@@ -74,7 +74,7 @@ public class ReverseLinkedList {
     }
 
     // ===========================================================
-    // Helper: Convert array to ListNode
+    // Helper: Convert Array to ListNode
     // ===========================================================
     private static ListNode arrayToList(int[] arr) {
         if (arr == null || arr.length == 0) return null;

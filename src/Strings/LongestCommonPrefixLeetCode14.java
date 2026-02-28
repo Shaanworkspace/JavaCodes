@@ -8,7 +8,7 @@ public class LongestCommonPrefixLeetCode14 {
     // ===========================================================
     public String longestCommonPrefix(String[] strs) {
         /*
-        we will first short the array it will short in alphabetical order also --> https://www.youtube.com/watch?v=wtOQaovlvhY
+        we will first short the Array it will short in alphabetical order also --> https://www.youtube.com/watch?v=wtOQaovlvhY
          */
         Arrays.sort(strs);
 

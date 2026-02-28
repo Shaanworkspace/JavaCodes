@@ -38,7 +38,7 @@ public class CombinationSumLeetCode39 {
         //multiple include
         findAllCombination(arr,idx,target-arr[idx],ans,combi);
 
-        //end me array khali rkhna h to pop kr du last
+        //end me Array khali rkhna h to pop kr du last
         combi.removeLast();
 
         //Exclusion

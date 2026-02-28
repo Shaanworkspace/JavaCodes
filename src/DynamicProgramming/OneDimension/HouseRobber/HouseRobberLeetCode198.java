@@ -12,7 +12,7 @@ import java.util.*;
  * adjacent houses have security systems — you cannot rob
  * two directly adjacent houses.
  *
- * Given an integer array nums representing the money
+ * Given an integer Array nums representing the money
  * in each house, return the maximum sum you can rob
  * without alerting the police.
  *

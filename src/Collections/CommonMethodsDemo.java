@@ -18,7 +18,7 @@ public class CommonMethodsDemo {
         System.out.println("Size: " + arrayList.size());
         System.out.println("IsEmpty: " + arrayList.isEmpty());
         Object[] arrayArrayList = arrayList.toArray();
-        System.out.println("ArrayList to array: " + Arrays.toString(arrayArrayList));
+        System.out.println("ArrayList to Array: " + Arrays.toString(arrayArrayList));
 
         Iterator<String> arrayListItr = arrayList.iterator();
         System.out.print("ArrayList Iteration: ");
@@ -43,7 +43,7 @@ public class CommonMethodsDemo {
         System.out.println("Size: " + linkedList.size());
         System.out.println("IsEmpty: " + linkedList.isEmpty());
         Object[] arrayLinkedList = linkedList.toArray();
-        System.out.println("LinkedList to array: " + Arrays.toString(arrayLinkedList));
+        System.out.println("LinkedList to Array: " + Arrays.toString(arrayLinkedList));
 
         Iterator<String> linkedListItr = linkedList.iterator();
         System.out.print("LinkedList Iteration: ");
@@ -67,7 +67,7 @@ public class CommonMethodsDemo {
         System.out.println("Size: " + hashSet.size());
         System.out.println("IsEmpty: " + hashSet.isEmpty());
         Object[] arrayHashSet = hashSet.toArray();
-        System.out.println("HashSet to array: " + Arrays.toString(arrayHashSet));
+        System.out.println("HashSet to Array: " + Arrays.toString(arrayHashSet));
 
         Iterator<String> hashSetItr = hashSet.iterator();
         System.out.print("HashSet Iteration: ");
@@ -91,7 +91,7 @@ public class CommonMethodsDemo {
         System.out.println("Size: " + queue.size());
         System.out.println("IsEmpty: " + queue.isEmpty());
         Object[] arrayQueue = queue.toArray();
-        System.out.println("Queue to array: " + Arrays.toString(arrayQueue));
+        System.out.println("Queue to Array: " + Arrays.toString(arrayQueue));
 
         Iterator<String> queueItr = queue.iterator();
         System.out.print("Queue Iteration: ");
@@ -114,7 +114,7 @@ public class CommonMethodsDemo {
         System.out.println("Contains 'Mango'? " + treeSet.contains("Mango"));
         System.out.println("Size: " + treeSet.size());
         System.out.println("IsEmpty: " + treeSet.isEmpty());
-        System.out.println("TreeSet to array: " + Arrays.toString(treeSet.toArray()));
+        System.out.println("TreeSet to Array: " + Arrays.toString(treeSet.toArray()));
 
         Iterator<String> treeSetItr = treeSet.iterator();
         System.out.print("TreeSet Iteration: ");
@@ -137,7 +137,7 @@ public class CommonMethodsDemo {
         System.out.println("Contains 'One'? " + stack.contains("One"));
         System.out.println("Size: " + stack.size());
         System.out.println("IsEmpty: " + stack.isEmpty());
-        System.out.println("Stack to array: " + Arrays.toString(stack.toArray()));
+        System.out.println("Stack to Array: " + Arrays.toString(stack.toArray()));
 
         Iterator<String> stackItr = stack.iterator();
         System.out.print("Stack Iteration: ");
@@ -160,7 +160,7 @@ public class CommonMethodsDemo {
         System.out.println("Contains 'Red'? " + vector.contains("Red"));
         System.out.println("Size: " + vector.size());
         System.out.println("IsEmpty: " + vector.isEmpty());
-        System.out.println("Vector to array: " + Arrays.toString(vector.toArray()));
+        System.out.println("Vector to Array: " + Arrays.toString(vector.toArray()));
 
         Iterator<String> vectorItr = vector.iterator();
         System.out.print("Vector Iteration: ");
@@ -183,7 +183,7 @@ public class CommonMethodsDemo {
         System.out.println("Contains 'Apple'? " + pq.contains("Apple"));
         System.out.println("Size: " + pq.size());
         System.out.println("IsEmpty: " + pq.isEmpty());
-        System.out.println("PriorityQueue to array: " + Arrays.toString(pq.toArray()));
+        System.out.println("PriorityQueue to Array: " + Arrays.toString(pq.toArray()));
 
         Iterator<String> pqItr = pq.iterator();
         System.out.print("PriorityQueue Iteration: ");

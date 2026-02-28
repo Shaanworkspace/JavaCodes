@@ -50,7 +50,7 @@ public class MergeKSortedListsLeetCode23 {
     }
 
     // ===========================================================
-    // Helper: Convert array to ListNode
+    // Helper: Convert Array to ListNode
     // ===========================================================
 
     private static ListNode mergeTwoLists(ListNode l1,ListNode l2){
@@ -81,7 +81,7 @@ public class MergeKSortedListsLeetCode23 {
     }
 
     // ===========================================================
-    // Helper: Convert ListNode to array for comparison
+    // Helper: Convert ListNode to Array for comparison
     // ===========================================================
     private static List<Integer> listToArray(ListNode head) {
         List<Integer> result = new ArrayList<>();
