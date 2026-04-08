@@ -1,4 +1,4 @@
-package Graphs.BFS;
+package Graphs.BFS.Matrix;
 
 import java.util.*;
 
@@ -20,7 +20,7 @@ public class RottingOrangesLeetCode994 {
 		int row = grid.length;
 		int col = grid[0].length;
 		int freshOranges = 0;
-		int minutes=0;
+		int minutes = 0;
 		//adding all rotten oranges to queue
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
@@ -88,7 +88,48 @@ public class RottingOrangesLeetCode994 {
 	}
 
 	public int orangesRottingTryYourSelf(int[][] grid) {
-		return 0;
+		int m = grid.length;
+		int n = grid[0].length;
+		int count = -1;
+		int freshOranges = 0;
+		Queue<Pair> queue = new ArrayDeque<>();
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				if (grid[i][j] == 2) {
+					queue.add(new Pair(i, j));
+				}
+				if (grid[i][j] == 1) {
+					freshOranges++;
+				}
+			}
+		}
+		if (freshOranges == 0) return 0;
+
+		while (!queue.isEmpty()) {
+			int si = queue.size();
+			for (int s = 0; s < si; s++) {
+				Pair p = queue.poll();
+				int r = p.x;
+				int c = p.y;
+
+				int[] cr = {0, 0, -1, 1};
+				int[] cc = {-1, 1, 0, 0};
+
+				for (int i = 0; i < 4; i++) {
+					int nr = r + cr[i];
+					int nc = c + cc[i];
+					if (nr >= 0 && nr < m && nc >= 0 && nc < n && grid[nr][nc] == 1) {
+						queue.add(new Pair(nr, nc));
+						grid[nr][nc] = 2;
+						freshOranges--;
+					}
+				}
+			}
+			count++;
+		}
+
+		if(freshOranges!=0) return -1;
+		return count;
 	}
 
 	public int orangesRotting(int[][] grid) {
@@ -144,9 +185,13 @@ public class RottingOrangesLeetCode994 {
 		int[][] grid3 = {
 				{0, 2}
 		};
+		int[][] grid4 = {
+				{0}
+		};
 
 		runTest(solver, grid1, 4, "Test 1");
 		runTest(solver, grid2, -1, "Test 2");
 		runTest(solver, grid3, 0, "Test 3");
+		runTest(solver, grid4, 0, "Test 4");
 	}
 }

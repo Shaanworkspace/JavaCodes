@@ -1,10 +1,66 @@
 package BitManipulation;
-import java.util.*;
+import java.util.Arrays;
 
 public class MaximumXOROfTwoNumbersLeetCode421 {
 
 	public int findMaximumXORMethod1(int[] nums) {
-		return 0;
+		//Make a Trie of all binary digits of number
+		TrieNode node = new TrieNode();
+		for(int a : nums) makeTrie(node,a);
+		int max = Integer.MIN_VALUE;
+
+		for(int a : nums){
+			max = Math.max(finder(node,a),max);
+		}
+		return max;
+	}
+	class TrieNode{
+		TrieNode left; //0
+		TrieNode right; //1
+		TrieNode(){
+			left = null;
+			right = null;
+		}
+	}
+
+	private int finder(TrieNode node, int a) {
+		TrieNode curr = node;
+		int val =0;
+		for(int i =31;i>=0;i--){
+			int bit = a>>i & 1;
+			if(bit==0) {
+				if(curr.right==null){
+					curr = curr.left;
+				}else{
+					val += (1 << i);
+					curr = curr.right;
+				}
+			}
+			else{
+				if(curr.left==null){
+					curr = curr.right;
+				}else{
+					val += (1 << i);
+					curr = curr.left;
+				}
+			}
+		}
+		return val;
+	}
+
+	private void makeTrie(TrieNode node, int a) {
+		TrieNode curr = node;
+		for(int i =31;i>=0;i--){
+			int bit = a>>i & 1;
+			if(bit==0) {
+				if(curr.left == null) curr.left = new TrieNode();
+				curr = curr.left;
+			}
+			else{
+				if(curr.right == null) curr.right = new TrieNode();
+				curr = curr.right;
+			}
+		}
 	}
 
 	public int findMaximumXORMethod2(int[] nums) {

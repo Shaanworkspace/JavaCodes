@@ -6,18 +6,44 @@ public class MinimumPathSumLeetCode64 {
 
 	public int minPathSumBrute(int[][] grid) {
 
-		 return 1;
+		return 1;
 	}
 
-
+	int[][] dp1;
 	public int minPathSumTryYourSelf(int[][] grid) {
-		return 0;
+		int m = grid.length;
+		int n = grid[0].length;
+
+		dp1 = new int[m][n];
+
+		// initialize dp with -1
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				dp1[i][j] = -1;
+			}
+		}
+		return helper(0, 0, grid, dp1);
 	}
 
+	private int helper(int row, int col, int[][] grid, int[][] dp1) {
+		if (row >= grid.length || col >= grid[0].length) return Integer.MAX_VALUE;
+		int curr = grid[row][col];
+		if (row == grid.length - 1 && col == grid[0].length - 1) return curr;
 
+
+		if (dp1[row][col] != -1) {
+			return dp1[row][col];
+		}
+		int right = helper(row, col + 1, grid, dp1);
+		int down = helper(row + 1, col, grid, dp1);
+
+		dp1[row][col] = grid[row][col] + Math.min(right, down);
+		return dp1[row][col];
+	}
 
 
 	int[][] dp;
+
 	public int minPathSum(int[][] grid) {
 		int m = grid.length;
 		int n = grid[0].length;
@@ -53,39 +79,39 @@ public class MinimumPathSumLeetCode64 {
 		}
 
 		int right = finderDP(grid, row, col + 1, m, n);
-		int down  = finderDP(grid, row + 1, col, m, n);
+		int down = finderDP(grid, row + 1, col, m, n);
 
 		dp[row][col] = grid[row][col] + Math.min(right, down);
 		return dp[row][col];
 	}
 
 
-
 	int minPath = Integer.MAX_VALUE;
+
 	public int minPathSumBacktrack(int[][] grid) {
 		minPath = Integer.MAX_VALUE;
-		finder(grid,0,0,0,grid.length,grid[0].length);
+		finder(grid, 0, 0, 0, grid.length, grid[0].length);
 		return minPath;
 	}
 
 
-	private void finder(int[][] grid, int row, int col,int sum,int m ,int n ) {
+	private void finder(int[][] grid, int row, int col, int sum, int m, int n) {
 		if (sum >= minPath) return;
 
-		if(row>=m || col>=n){
-			return ;
+		if (row >= m || col >= n) {
+			return;
 		}
 		sum += grid[row][col];
 
-		if(row==m-1 && col==n-1){
-			if(sum<minPath){
-				minPath=sum;
+		if (row == m - 1 && col == n - 1) {
+			if (sum < minPath) {
+				minPath = sum;
 				System.out.println(minPath);
 				return;
 			}
 		}
-		finder(grid,row+1,col,sum,m,n);
-		finder(grid,row,col+1,sum,m,n);
+		finder(grid, row + 1, col, sum, m, n);
+		finder(grid, row, col + 1, sum, m, n);
 	}
 
 
@@ -102,9 +128,9 @@ public class MinimumPathSumLeetCode64 {
 		printGrid(grid);
 
 		int brute = solver.minPathSumBrute(grid);
-		int your  = solver.minPathSumTryYourSelf(grid);
-		int opt   = solver.minPathSum(grid);
-		int optBack   = solver.minPathSumBacktrack(grid);
+		int your = solver.minPathSumTryYourSelf(grid);
+		int opt = solver.minPathSum(grid);
+		int optBack = solver.minPathSumBacktrack(grid);
 
 		System.out.println("Expected         : " + expected);
 		System.out.println("Brute Force      : " + brute);
